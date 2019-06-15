@@ -1,7 +1,7 @@
 export default {
   development: {
     server: {
-      PORT: 5000,
+      PORT: 4000,
     },
     db: {
       DB_HOST: 'localhost',

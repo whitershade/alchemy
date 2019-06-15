@@ -1,8 +1,16 @@
-import path from "path";
-
 require('./config');
+import path from "path";
+import { path as rootPath } from 'app-root-path';
+const express = require('express');
 
-const app = require('express')();
+const app = express();
+
+app.use(express.static(path.join(rootPath, '..', 'frontend', 'build')));//
+// @ts-ignore
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(rootPath, '..', 'frontend', 'build', 'index.html'));
+});
+
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
@@ -16,7 +24,6 @@ import {
   createItem as createCard,
   deleteItem as deleteCard
 } from './api/cards/controllers';
-import {path as rootPath} from "app-root-path";
 
 io.on('connection', (socket:any) => {
   socket.on('get players', () => {
@@ -34,13 +41,8 @@ io.on('connection', (socket:any) => {
   });
 });
 
-// @ts-ignore
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(rootPath, '..', 'frontend', 'build', 'index.html'));
-});
-
-http.listen(4000, () => {
-  console.log('listening on *:4000');
+http.listen(process.env.PORT, () => {
+  console.log(`listening on *:${process.env.PORT}`);
 });
 
 

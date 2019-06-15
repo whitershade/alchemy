@@ -1,5 +1,6 @@
 import io from 'socket.io-client';
-const socket = io('http://localhost:4000');
+// const ioLink = process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/';
+const socket = io();
 
 export const subscribeToPlayers = (cb:Function) => {
   socket.on('send players', (players:Object) => {
