@@ -9,8 +9,7 @@ const PlayerForm = ({ onSubmit }) => (
     render={({ handleSubmit, pristine, invalid }) => (
       <form onSubmit={handleSubmit} className="card-form">
         <div>
-          <label>Card name</label>
-          <Field name="name" component="input" placeholder="Name" />
+          <Field name="name" component="input" placeholder="Card name" />
         </div>
 
         <button type="submit" disabled={pristine || invalid}>
