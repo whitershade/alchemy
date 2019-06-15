@@ -6,11 +6,17 @@
   "scripts": {
     "start": "node ./backend/index.js",
     "develop": "concurrently \"npm run develop --prefix backend\" \"PORT=3003 npm run start --prefix frontend\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run db:migrate --prefix backend && npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^4.1.0"
+  },
+  "engines": {
+    "node": "10.11.x",
+    "npm": "6.4.x"
   }
 }
+
+
