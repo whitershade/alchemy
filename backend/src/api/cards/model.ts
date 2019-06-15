@@ -1,4 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
+
+// @ts-ignore
 import sequelize from '../../db'
 
 class Card extends Model {}
@@ -13,6 +15,7 @@ Card.init({
     allowNull: true
   },
 }, {
+  // @ts-ignore
   sequelize,
   modelName: 'card'
 });

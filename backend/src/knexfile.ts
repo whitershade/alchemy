@@ -1,4 +1,3 @@
-// Update with your config settings.
 require('./config');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
 

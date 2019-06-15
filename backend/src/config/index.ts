@@ -11,3 +11,5 @@ const applyConfigValue = (value:any, key: string = '') => {
 
 if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
   applyConfigValue(config);
+
+module.exports = null;

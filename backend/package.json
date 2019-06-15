@@ -7,9 +7,9 @@
     "build": "tsc",
     "start": "node build/index.js",
     "develop": "cross-env nodemon --watch './**/*.ts' --exec 'ts-node' --files src/server.ts",
-    "db:seed": "src/knex seed:run --knexfile src/knexfile.ts",
-    "db:migrate": "src/knex migrate:latest --knexfile src/knexfile.ts",
-    "db:rollback": "src/knex migrate:rollback --knexfile src/knexfile.ts",
+    "db:seed": "knex seed:run --knexfile src/knexfile.ts",
+    "db:migrate": "knex migrate:latest --knexfile src/knexfile.ts",
+    "db:rollback": "knex migrate:rollback --knexfile src/knexfile.ts",
     "db:reset": "npm run db:rollback && npm run db:migrate && npm run db:seed"
   },
   "author": "",
