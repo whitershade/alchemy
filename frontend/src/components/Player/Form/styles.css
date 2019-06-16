@@ -1,3 +1,11 @@
 .player-form {
     display: flex;
+
+    padding: 5px 0;
+
+    margin-bottom: 10px;
+}
+
+.player-form-text-field-wrapper {
+    margin-right: 10px;
 }

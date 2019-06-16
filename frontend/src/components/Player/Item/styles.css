@@ -1,10 +1,53 @@
 .player-item {
     box-sizing: border-box;
-    border: 1px solid black;
 
+    display: flex;
+    flex-direction: column;
     flex-shrink: 0;
 
-    padding: 10px;
+    overflow: hidden;
 
-    width: 20%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.player-item:not(:last-of-type) {
+    margin-right: 10px;
+}
+
+.player-name {
+    margin: 0;
+    padding: 0;
+}
+
+.player-item-header {
+    display: flex;
+    padding: 5px 0;
+
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid gray;
+}
+
+.player-item-row {
+    padding: 3px 5px;
+}
+
+.cards-list {
+    height: calc(100% - 100px);
+
+    overflow: auto;
+}
+
+@media screen and (orientation:portrait) {
+    .player-item {
+        width: 40%;
+    }
+}
+@media screen and (orientation:landscape) {
+    .player-item {
+        width: 20%;
+    }
 }

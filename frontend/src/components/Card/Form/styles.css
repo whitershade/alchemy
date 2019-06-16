@@ -1,3 +1,13 @@
 .card-form {
     display: flex;
 }
+
+.card-form-field {
+    width: 100%;
+}
+
+.card-form-wrapper {
+    display: flex;
+
+    flex-direction: column;
+}
