@@ -20,7 +20,7 @@ const PlayerItem = ({ id, name, cards }) => {
       <div className="player-item-row cards-list">
         <CardList cards={cards} />
       </div>
-      <div className="player-item-row">
+      <div className="player-item-row cards-form-wrapper">
         <CardForm onSubmit={createCard(id)} />
       </div>
     </li>

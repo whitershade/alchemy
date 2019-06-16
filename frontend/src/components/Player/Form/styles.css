@@ -1,5 +1,6 @@
 .player-form {
     display: flex;
+    flex-shrink: 0;
 
     padding: 5px 0;
 

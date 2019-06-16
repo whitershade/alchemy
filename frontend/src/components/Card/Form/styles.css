@@ -1,5 +1,7 @@
 .card-form {
     display: flex;
+
+    justify-content: center;
 }
 
 .card-form-field {
