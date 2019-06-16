@@ -7,10 +7,14 @@
     "build": "tsc",
     "start": "node build/server.js",
     "develop": "cross-env nodemon --watch './**/*.ts' --exec 'ts-node' --files src/server.ts",
-    "db:seed": "knex seed:run --knexfile src/knexfile.ts",
-    "db:migrate": "knex migrate:latest --knexfile src/knexfile.ts",
-    "db:rollback": "knex migrate:rollback --knexfile src/knexfile.ts",
-    "db:reset": "npm run db:rollback && npm run db:migrate && npm run db:seed"
+    "db:seed": "knex seed:run --knexfile knexfile.ts",
+    "db:migrate": "knex migrate:latest --knexfile knexfile.ts",
+    "db:rollback": "knex migrate:rollback --knexfile knexfile.ts",
+    "db:reset": "npm run db:rollback && npm run db:migrate && npm run db:seed",
+    "db:prod:seed": "NODE_ENV=production npm run db:seed",
+    "db:prod:migrate": "NODE_ENV=production npm run db:migrate",
+    "db:prod:rollback": "NODE_ENV=production npm run db:rollback",
+    "db:prod:reset": "NODE_ENV=production npm run db:reset"
   },
   "author": "",
   "license": "ISC",

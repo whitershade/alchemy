@@ -1,15 +1,20 @@
-require('./config');
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
+require('./src/config');
+
+let dbConnectionUrl = '';
+
+if (process.env.NODE_ENV === 'development')  {
+  const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DIALECT } = process.env;
+
+  dbConnectionUrl = `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
+} else {
+  const { DATABASE_URL } = require('./secret.json');
+
+  dbConnectionUrl = `${DATABASE_URL}?ssl=false`;
+}
 
 module.exports = {
   client: 'postgresql',
-  connection: {
-    database: DB_NAME,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    host: DB_HOST,
-    port: DB_PORT
-  },
+  connection: dbConnectionUrl,
   migrations: {
     directory: './knex/migrations'
   },

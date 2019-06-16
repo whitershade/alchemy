@@ -1,3 +1,5 @@
 node_modules/
 .idea/
 .DS_Store
+backend/secret.json
+frontend/build
