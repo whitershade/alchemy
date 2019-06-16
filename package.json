@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./backend/lib/server.js",
+    "start": "node ./backend/build/server.js",
     "develop": "concurrently \"npm run develop --prefix backend\" \"PORT=3003 npm run start --prefix frontend\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend && npm run build --prefix backend"
   },
