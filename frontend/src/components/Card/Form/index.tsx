@@ -12,9 +12,9 @@ const PlayerForm = ({ onSubmit }) => (
           <Field name="name" component="input" placeholder="Card name" />
         </div>
 
-        <button type="submit" disabled={pristine || invalid}>
-          Submit
-        </button>
+        {/*<button type="submit" disabled={pristine || invalid}>*/}
+        {/*  Submit*/}
+        {/*</button>*/}
       </form>
     )}
   />
