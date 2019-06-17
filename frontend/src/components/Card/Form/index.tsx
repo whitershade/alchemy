@@ -7,12 +7,19 @@ import './styles.css';
 const PlayerForm = ({ onSubmit }) => (
   <Form
     onSubmit={onSubmit}
-    render={({ handleSubmit, pristine, invalid }) => (
+    render={({ handleSubmit, pristine, invalid, form }) => (
       <form onSubmit={handleSubmit} className="card-form">
         <div className="card-form-wrapper">
           <Field name="name" component={TextField} placeholder="Card name" className="card-form-field" />
 
-          <button type="submit" disabled={pristine || invalid}>
+          <button
+            type="submit"
+            disabled={pristine || invalid}
+            onClick={() => {
+              form.submit();
+              form.reset();
+            }}
+          >
             Submit
           </button>
         </div>

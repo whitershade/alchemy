@@ -12,6 +12,8 @@ body,
 #root,
 .app {
   height: 100%;
+
+  background-color: #e3e3ff;
 }
 
 code {
