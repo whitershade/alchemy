@@ -1,7 +1,9 @@
 require('./config');
 import path from "path";
 import { path as rootPath } from 'app-root-path';
-const express = require('express');
+import express from 'express';
+// @ts-ignore
+import sharedConstants from 'alchemy-shared-constants';
 
 const app = express();
 
@@ -26,15 +28,16 @@ import {
 } from './api/cards/controllers';
 
 io.on('connection', (socket:any) => {
-  socket.emit('send players', getPlayers(io));
+  socket.emit(sharedConstants.socket.player.sendAll, getPlayers(io));
 
-  socket.on('get players', () => socket.emit('send players', getPlayers(io)));
+  socket.on(sharedConstants.socket.player.getAll, () =>
+    socket.emit(sharedConstants.socket.player.sendAll, getPlayers(io)));
 
-  socket.on('create player', (player:any) => createPlayer(io, player));
-  socket.on('delete player', (playerId:number) => deletePlayer(io, playerId));
+  socket.on(sharedConstants.socket.player.create, (player:any) => createPlayer(io, player));
+  socket.on(sharedConstants.socket.player.delete, (playerId:number) => deletePlayer(io, playerId));
 
-  socket.on('create card', (card:any) => createCard(io, card));
-  socket.on('delete card', (cardId:number) => deleteCard(io, cardId));
+  socket.on(sharedConstants.socket.card.create, (card:any) => createCard(io, card));
+  socket.on(sharedConstants.socket.card.delete, (cardId:number) => deleteCard(io, cardId));
 
   socket.on('disconnect', () => {
     console.log('got disconnect!');

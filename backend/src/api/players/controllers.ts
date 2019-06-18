@@ -1,8 +1,8 @@
 import { keyBy } from 'lodash';
+// @ts-ignore
+import sharedConstants from 'alchemy-shared-constants';
 import Model from './model';
 import Card from '../cards/model';
-
-const name = 'player';
 
 export const getItems = async (io:any) => {
   const items = await Model.findAll({
@@ -17,17 +17,17 @@ export const getItems = async (io:any) => {
     cards: keyBy(dataValues.cards, 'id')
   }));
 
-  io.emit(`send ${name}s`, keyBy(data, 'id'));
+  io.emit(sharedConstants.socket.player.sendAll, keyBy(data, 'id'));
 };
 
 export const createItem = async (io:any, player:any) => {
   const item = await Model.create({ ...player }, { raw: true });
 
-  io.emit(`${name} created`, item);
+  io.emit(sharedConstants.socket.player.created, item);
 };
 
 export const deleteItem = async (io:any, id: number) => {
   await Model.destroy({ where: { id } });
 
-  io.emit(`${name} deleted`, id);
+  io.emit(sharedConstants.socket.player.deleted, id);
 };

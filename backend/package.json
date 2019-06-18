@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node build/server.js",
+    "preinstall": "npm install ../shared-constants",
     "develop": "cross-env nodemon --watch './**/*.ts' --exec 'ts-node' --files src/server.ts",
     "db:seed": "knex seed:run --knexfile knexfile.ts",
     "db:migrate": "knex migrate:latest --knexfile knexfile.ts",
@@ -23,6 +24,7 @@
     "@types/express": "^4.16.1",
     "@types/lodash": "^4.14.132",
     "@types/sequelize": "^4.28.2",
+    "alchemy-shared-constants": "file:../shared-constants",
     "app-root-path": "^2.2.1",
     "cross-env": "^5.2.0",
     "express": "^4.17.1",
