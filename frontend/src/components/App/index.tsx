@@ -4,9 +4,11 @@ import {
   createPlayer,
   subscribeToPlayerCreated,
   subscribeToPlayerDeleted,
+} from '../../api/players';
+import {
   subscribeToCardCreated,
   subscribeToCardDeleted
-} from '../../api';
+} from '../../api/cards';
 import PlayerForm from '../Player/Form';
 import getPlayersState from '../../getPlayersState';
 import PlayersList from '../Player/List';

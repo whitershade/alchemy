@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import {deleteCard} from '../../../api';
+import { deleteCard } from '../../../api/cards';
 import './styles.css';
 import Icon from "@material-ui/core/Icon";
 
