@@ -1,9 +1,9 @@
 import React from 'react';
-import Icon from '@material-ui/core/Icon';
-import { createCard } from '../../../api/cards';
-import { deletePlayer } from '../../../api/players';
-import CardList from '../../Card/List';
-import CardForm from '../../Card/Form';
+import Icon from '@material-ui/core/Icon/index';
+import { deletePlayer } from '../../Actions';
+import { createCard } from '../../../Cards/Actions';
+import CardList from '../../../Cards/Components/List';
+import CardForm from '../../../Cards/Components/Form';
 import './styles.css';
 
 const PlayerItem = ({ id, name, cards }) => (
@@ -11,7 +11,7 @@ const PlayerItem = ({ id, name, cards }) => (
     <div className="player-item-header player-item-row">
       <h4 className="player-name">{ name }</h4>
         <Icon
-          onClick={() => deletePlayer(id)}
+          onClick={deletePlayer(id, name)}
           aria-label="Delete"
         >
             remove_circle_outline

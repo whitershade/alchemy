@@ -8,7 +8,7 @@ const app = express();
 app.use(express.static(path.join(rootPath, '..', 'frontend', 'build')));//
 // @ts-ignore
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(rootPath, '..', 'frontend', 'build', 'index.html'));
+  res.sendFile(path.join(rootPath, '..', 'frontend', 'build', 'Actions.ts.html'));
 });
 
 const http = require('http').createServer(app);
@@ -26,7 +26,9 @@ import {
 } from './api/cards/controllers';
 
 io.on('connection', (socket:any) => {
-  setTimeout(() => socket.emit('send players', getPlayers(io)), 300);
+  socket.emit('send players', getPlayers(io));
+
+  socket.on('get players', () => socket.emit('send players', getPlayers(io)));
 
   socket.on('create player', (player:any) => createPlayer(io, player));
   socket.on('delete player', (playerId:number) => deletePlayer(io, playerId));

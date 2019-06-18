@@ -1,6 +1,6 @@
 import React from 'react';
 import { map } from 'lodash';
-import PlayerItem from '../Item/index';
+import PlayerItem from '../Item';
 import './styles.css';
 
 // @ts-ignore

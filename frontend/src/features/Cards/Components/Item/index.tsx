@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import { deleteCard } from '../../../api/cards';
+import { deleteCard } from '../../Actions';
 import './styles.css';
 import Icon from "@material-ui/core/Icon";
 
@@ -11,7 +11,7 @@ const CardItem = ({ name, id }) => (
       <div className="card-wrapper">
         <p className="card-name">{name}</p>
         <Icon
-          onClick={() => deleteCard(id)}
+          onClick={deleteCard(id)}
           aria-label="Delete"
         >
           remove_circle_outline

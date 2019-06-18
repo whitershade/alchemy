@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import TextField from '../../TextFiled';
+import TextField from '../../../../components/TextFiled';
 import './styles.css';
 
 // @ts-ignore
