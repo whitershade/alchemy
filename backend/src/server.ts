@@ -26,9 +26,7 @@ import {
 } from './api/cards/controllers';
 
 io.on('connection', (socket:any) => {
-  socket.on('get players', () => {
-    socket.emit('send players', getPlayers(io));
-  });
+  setTimeout(() => socket.emit('send players', getPlayers(io)), 300);
 
   socket.on('create player', (player:any) => createPlayer(io, player));
   socket.on('delete player', (playerId:number) => deletePlayer(io, playerId));

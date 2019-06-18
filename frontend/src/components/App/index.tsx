@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {
-  getPlayers,
   subscribeToPlayers,
   createPlayer,
   subscribeToPlayerCreated,
@@ -24,7 +23,6 @@ const useFetch = () => {
   } = getPlayersState({});
 
   useEffect(() => {
-    getPlayers();
     subscribeToPlayers((players:any) => setPlayers(players));
     subscribeToPlayerCreated((player:any) => addPlayer(player));
     subscribeToPlayerDeleted((playerId: number) => deletePlayer(playerId));
