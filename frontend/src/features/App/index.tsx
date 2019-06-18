@@ -20,7 +20,7 @@ const App: React.FC = ({ ...subscriptions }) => {
     // @ts-ignore
     forEach(subscriptions, (subscription) => subscription());
 
-  }, []);
+  }, [subscriptions]);
 
   return (
     <div className="app">
