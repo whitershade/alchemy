@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   player: {
     getAll: 'get players',
     sendAll: 'send players',

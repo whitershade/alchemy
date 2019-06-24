@@ -1,9 +1,14 @@
 import Sequelize, { Model } from 'sequelize';
 import Card from '../cards/model';
-// @ts-ignore
 import sequelize from '../../db'
 
-class Player extends Model {}
+class Player extends Model {
+  public id!: number;
+  public name!: string;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+}
 
 Player.init({
   name: {
@@ -11,7 +16,6 @@ Player.init({
     allowNull: false
   },
 }, {
-  // @ts-ignore
   sequelize,
   modelName: 'player'
 });

@@ -1,10 +1,11 @@
 import { keyBy } from 'lodash';
-// @ts-ignore
-import sharedConstants from 'alchemy-shared-constants';
+import socketConstants from 'alchemy-shared/constants/socket';
+import { Player } from 'alchemy-shared/types';
+import { Server } from 'socket.io';
 import Model from './model';
 import Card from '../cards/model';
 
-export const getItems = async (io:any) => {
+export const getItems = async (io:Server) => {
   const items = await Model.findAll({
     include: [
       { model: Card }
@@ -17,17 +18,17 @@ export const getItems = async (io:any) => {
     cards: keyBy(dataValues.cards, 'id')
   }));
 
-  io.emit(sharedConstants.socket.player.sendAll, keyBy(data, 'id'));
+  io.emit(socketConstants.player.sendAll, keyBy(data, 'id'));
 };
 
-export const createItem = async (io:any, player:any) => {
-  const item = await Model.create({ ...player }, { raw: true });
+export const createItem = async (io:Server, player:Player) => {
+  const item = await Model.create(player, { raw: true });
 
-  io.emit(sharedConstants.socket.player.created, item);
+  io.emit(socketConstants.player.created, item);
 };
 
-export const deleteItem = async (io:any, id: number) => {
+export const deleteItem = async (io:Server, id: number) => {
   await Model.destroy({ where: { id } });
 
-  io.emit(sharedConstants.socket.player.deleted, id);
+  io.emit(socketConstants.player.deleted, id);
 };

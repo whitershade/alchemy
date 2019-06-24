@@ -1,13 +1,13 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
+import React, { FunctionComponent } from 'react';
+import CardComponent from '@material-ui/core/Card';
 import { deleteCard } from '../../Actions';
 import './styles.css';
 import Icon from "@material-ui/core/Icon";
+import { Card } from 'alchemy-shared/types';
 
-// @ts-ignore
-const CardItem = ({ name, id }) => (
+const CardItem:FunctionComponent<Card> = ({ name, id }) => (
   <li className="card-item">
-    <Card>
+    <CardComponent>
       <div className="card-wrapper">
         <p className="card-name">{name}</p>
         <Icon
@@ -17,7 +17,7 @@ const CardItem = ({ name, id }) => (
           remove_circle_outline
         </Icon>
       </div>
-    </Card>
+    </CardComponent>
   </li>
 );
 

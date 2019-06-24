@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Icon from '@material-ui/core/Icon/index';
+import { Player } from 'alchemy-shared/types';
 import { deletePlayer } from '../../Actions';
 import { createCard } from '../../../Cards/Actions';
 import CardList from '../../../Cards/Components/List';
 import CardForm from '../../../Cards/Components/Form';
 import './styles.css';
 
-const PlayerItem = ({ id, name, cards }) => (
+const PlayerItem:FunctionComponent<Player> = ({ id, name, cards }) => (
   <li className="player-item">
     <div className="player-item-header player-item-row">
       <h4 className="player-name">{ name }</h4>

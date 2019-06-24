@@ -5,7 +5,6 @@ export default {
     },
     db: {
       DB_HOST: 'localhost',
-      DB_DIALECT: 'postgres',
       DB_NAME: 'oprokopenko',
       DB_USER: 'oprokopenko',
       DB_PASSWORD: '',

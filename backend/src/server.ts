@@ -1,16 +1,16 @@
 require('./config');
 import path from "path";
 import { path as rootPath } from 'app-root-path';
-import express from 'express';
-// @ts-ignore
-import sharedConstants from 'alchemy-shared-constants';
+import express, { Request, Response } from 'express';
+import { Player, Card } from 'alchemy-shared/types';
+import socketConstants from 'alchemy-shared/constants/socket';
+import { Socket } from 'socket.io';
 
 const app = express();
 
-app.use(express.static(path.join(rootPath, '..', 'frontend', 'build')));//
-// @ts-ignore
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(rootPath, '..', 'frontend', 'build', 'Actions.ts.html'));
+app.use(express.static(path.join(rootPath, '..', 'frontend', 'build')));
+app.get('/*', (req: Request, res: Response) => {
+  res.sendFile(path.join(rootPath, '..', 'frontend', 'build', 'index.html'));
 });
 
 const http = require('http').createServer(app);
@@ -27,17 +27,17 @@ import {
   deleteItem as deleteCard
 } from './api/cards/controllers';
 
-io.on('connection', (socket:any) => {
-  socket.emit(sharedConstants.socket.player.sendAll, getPlayers(io));
+io.on('connection', (socket:Socket) => {
+  socket.emit(socketConstants.player.sendAll, getPlayers(io));
 
-  socket.on(sharedConstants.socket.player.getAll, () =>
-    socket.emit(sharedConstants.socket.player.sendAll, getPlayers(io)));
+  socket.on(socketConstants.player.getAll, () =>
+    socket.emit(socketConstants.player.sendAll, getPlayers(io)));
 
-  socket.on(sharedConstants.socket.player.create, (player:any) => createPlayer(io, player));
-  socket.on(sharedConstants.socket.player.delete, (playerId:number) => deletePlayer(io, playerId));
+  socket.on(socketConstants.player.create, (player:Player) => createPlayer(io, player));
+  socket.on(socketConstants.player.delete, (playerId:number) => deletePlayer(io, playerId));
 
-  socket.on(sharedConstants.socket.card.create, (card:any) => createCard(io, card));
-  socket.on(sharedConstants.socket.card.delete, (cardId:number) => deleteCard(io, cardId));
+  socket.on(socketConstants.card.create, (card:Card) => createCard(io, card));
+  socket.on(socketConstants.card.delete, (cardId:number) => deleteCard(io, cardId));
 
   socket.on('disconnect', () => {
     console.log('got disconnect!');

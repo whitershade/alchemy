@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 
 class Singleton {
-  protected static instance :Singleton = new Singleton;
+  protected static instance:Singleton = new Singleton;
 
   public socket = process.env.NODE_ENV === 'development' ?
     io('localhost:4000') :
@@ -14,7 +14,7 @@ class Singleton {
     }
   }
 
-  public static getInstance() :Singleton {
+  public static getInstance():Singleton {
     return Singleton.instance;
   }
 }

@@ -1,12 +1,16 @@
 import { AnyAction } from 'redux';
 import { omit } from 'lodash';
 
-export const addItems = (state: any, action: AnyAction) => ({
+type State = {
+  data: object;
+}
+
+export const addItems = (state: State, action: AnyAction) => ({
   ...state,
   data: action.payload,
 });
 
-export const addItem = (state: any, action: AnyAction) => ({
+export const addItem = (state: State, action: AnyAction) => ({
   ...state,
   data: {
     ...state.data,
@@ -14,7 +18,7 @@ export const addItem = (state: any, action: AnyAction) => ({
   }
 });
 
-export const removeItem = (state: any, action: AnyAction) => ({
+export const removeItem = (state: State, action: AnyAction) => ({
   ...state,
   data: omit(state.data, action.payload),
 });

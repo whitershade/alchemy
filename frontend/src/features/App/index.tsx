@@ -1,23 +1,25 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { forEach } from 'lodash';
 import { connect } from 'react-redux';
-import {
-  createPlayer,
-  loadPlayers,
-  subscriptions as playerSubscriptions
-} from '../Players/Actions';
-import {
-  subscriptions as cardSubscriptions
-} from '../Cards/Actions';
+import { createPlayer, loadPlayers, subscriptions as playerSubscriptions } from '../Players/Actions';
+import { subscriptions as cardSubscriptions } from '../Cards/Actions';
 import PlayerForm from '../Players/Components/Form';
 import Players from '../Players/Container';
 import './styles.css';
 
-const App: React.FC = ({ ...subscriptions }) => {
+type Props = {
+  subscribeToPlayers: Function;
+  subscribeToPlayerCreated: Function;
+  subscribeToPlayerDeleted: Function;
+
+  subscribeToCardCreated: Function;
+  subscribeToCardDeleted: Function;
+}
+
+const App = ({ ...subscriptions }: Props) => {
   useEffect(() => {
     loadPlayers();
 
-    // @ts-ignore
     forEach(subscriptions, (subscription) => subscription());
 
   }, [subscriptions]);

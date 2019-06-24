@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { map } from 'lodash';
-import Card from "../Item";
+import { Card } from 'alchemy-shared/types';
 import './styles.css';
+import CardComponent from '../Item';
 
-// @ts-ignore
-const CardList = ({ cards }) => (
+type Props = {
+  cards: {
+    [id: number]: Card;
+  }
+}
+
+const CardList:FunctionComponent<Props> = ({ cards }) => (
   <ul className="card-list">
-    { map(cards, ({ name, id }) =>
-      <Card key={id} id={id} name={name} />) }
+    { map(cards, (card) =>
+      <CardComponent key={card.id} { ...card } />) }
   </ul>
 );
 
