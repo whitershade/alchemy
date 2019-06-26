@@ -1,24 +1,26 @@
 export type Card = {
-  id: number,
-  name: string,
-  description?: string,
+  id: number;
+  name: string;
+  description?: string;
+  order: number;
+  playerId: number;
 
   createdAt: Date;
   updatedAt: Date;
 };
 
-export type Player = {
-  id: number,
-  name: string,
+export type Cards = Card[];
 
-  cards: {
-    [id: number]: Card;
-  },
+export type Player = {
+  id: number;
+  name: string;
+
+  cards: Cards;
 
   createdAt: Date;
   updatedAt: Date;
 }
 
 export type Players = {
-  [id:number]: Player
+  [id:number]: Player;
 }

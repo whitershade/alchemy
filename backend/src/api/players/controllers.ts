@@ -13,10 +13,7 @@ export const getItems = async (io:Server) => {
   });
 
   // @ts-ignore
-  const data = items.map(({ dataValues }) => ({
-    ...dataValues,
-    cards: keyBy(dataValues.cards, 'id')
-  }));
+  const data = items.map(({ dataValues }) => dataValues);
 
   io.emit(socketConstants.player.sendAll, keyBy(data, 'id'));
 };
