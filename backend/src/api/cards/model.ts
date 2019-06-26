@@ -7,6 +7,7 @@ class Card extends Model {
   public name!: string;
   public description!: string | null;
   public order!: number;
+  public playerId!: number;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;

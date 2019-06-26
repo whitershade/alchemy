@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { Card } from 'alchemy-shared/types';
-import CardComponent from '@material-ui/core/Card';
 import Icon from "@material-ui/core/Icon";
 import { Draggable } from "react-beautiful-dnd";
 import { deleteCard } from '../../Actions';
@@ -13,16 +12,19 @@ type Props = {
 
 const CardItem:FunctionComponent<Props> = ({ card, index }) => (
   <Draggable draggableId={String(card.id)} index={index}>
-    {provided =>
+    {(provided, snapshot) =>
       <li
-        className="card-item"
+        className={`card-item ${snapshot.isDragging ? 'isDragging' : ''}`}
         ref={provided.innerRef}
         { ...provided.draggableProps }
-        { ...provided.dragHandleProps }
       >
-        <CardComponent>
           <div className="card-wrapper">
-            <p className="card-name">{card.name}</p>
+            <p
+              { ...provided.dragHandleProps }
+              className="card-name"
+            >
+              {card.name}
+            </p>
             <Icon
               onClick={deleteCard(card.id)}
               aria-label="Delete"
@@ -30,7 +32,6 @@ const CardItem:FunctionComponent<Props> = ({ card, index }) => (
               remove_circle_outline
             </Icon>
           </div>
-        </CardComponent>
       </li>
     }
   </Draggable>
