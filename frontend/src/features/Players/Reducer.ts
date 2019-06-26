@@ -33,14 +33,8 @@ export default handleActions({
         ...state.data,
         [action.payload.playerId]: {
           ...state.data[action.payload.playerId],
-          cards: filter(state.data[action.payload.playerId].cards, ({ id }) => id === action.payload.id)
+          cards: filter(state.data[action.payload.playerId].cards, ({ id }) => id !== action.payload.id)
         }
-      }
-    }),
-    [cardsTypes.REMOVE_CARD]: (state: any, action: AnyAction) => ({
-      ...state,
-      data: {
-        ...state.data
       }
     }),
     [cardsTypes.REORDER_CARDS]: (state:any, action: AnyAction) => {
