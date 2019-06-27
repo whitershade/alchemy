@@ -14,8 +14,8 @@ type Props = {
 
 const PlayerItem:FunctionComponent<Props> = ({ player }) => (
   <Droppable droppableId={String(player.id)}>
-    {(provided) =>
-      <li className="player-item">
+    {(provided, snapshot) =>
+      <li className={`player-item ${snapshot.isDraggingOver ? 'is-dragging-over' : ''}`}>
       <div className="player-item-header player-item-row">
         <h4 className="player-name">{ player.name }</h4>
         <Icon

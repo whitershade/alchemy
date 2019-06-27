@@ -16,6 +16,10 @@
     background-color: lightsteelblue;
 }
 
+.player-item.is-dragging-over .cards-list {
+    background-color: lightgreen;
+}
+
 .player-item:not(:last-of-type) {
     margin-right: 10px;
 }
