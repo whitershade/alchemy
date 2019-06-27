@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import Icon from '@material-ui/core/Icon/index';
-import { Player } from 'alchemy-shared/types';
-import { Droppable } from 'react-beautiful-dnd';
+import { Card, Cards, Player } from 'alchemy-shared/types';
+import { Droppable, DroppableStateSnapshot } from 'react-beautiful-dnd';
 import { deletePlayer } from '../../Actions';
-import { createCard } from "../../../Cards/Actions";
+import { createCard } from '../../../Cards/Actions';
 import CardList from '../../../Cards/Components/List';
 import CardForm from '../../../Cards/Components/Form';
 import './styles.css';
@@ -12,10 +12,18 @@ type Props = {
   player: Player;
 }
 
+const getPlayerItemClassName = (snapshot:DroppableStateSnapshot, cards:Cards) => {
+  const isDragging = snapshot.isDraggingOver && cards.find(
+    (card: Card) => String(card.id) === snapshot.draggingOverWith
+  );
+
+  return `player-item ${isDragging ? 'is-dragging-over' : ''}`;
+};
+
 const PlayerItem:FunctionComponent<Props> = ({ player }) => (
   <Droppable droppableId={String(player.id)}>
     {(provided, snapshot) =>
-      <li className={`player-item ${snapshot.isDraggingOver ? 'is-dragging-over' : ''}`}>
+      <li className={getPlayerItemClassName(snapshot, player.cards)}>
       <div className="player-item-header player-item-row">
         <h4 className="player-name">{ player.name }</h4>
         <Icon
