@@ -2,7 +2,6 @@ require('./config');
 import path from "path";
 import { path as rootPath } from 'app-root-path';
 import express, { Request, Response } from 'express';
-import { Player, Card } from 'alchemy-shared/types';
 import socketConstants from 'alchemy-shared/constants/socket';
 import { Socket } from 'socket.io';
 
@@ -24,7 +23,8 @@ import {
 
 import {
   createItem as createCard,
-  deleteItem as deleteCard
+  deleteItem as deleteCard,
+  reorderItem as reorderCard
 } from './api/cards/controllers';
 
 io.on('connection', (socket:Socket) => {
@@ -33,11 +33,12 @@ io.on('connection', (socket:Socket) => {
   socket.on(socketConstants.player.getAll, () =>
     socket.emit(socketConstants.player.sendAll, getPlayers(io)));
 
-  socket.on(socketConstants.player.create, (player:Player) => createPlayer(io, player));
-  socket.on(socketConstants.player.delete, (playerId:number) => deletePlayer(io, playerId));
+  socket.on(socketConstants.player.create, player => createPlayer(io, player));
+  socket.on(socketConstants.player.delete, playerId => deletePlayer(io, playerId));
 
-  socket.on(socketConstants.card.create, (card:Card) => createCard(io, card));
-  socket.on(socketConstants.card.delete, (cardId:number) => deleteCard(io, cardId));
+  socket.on(socketConstants.card.create, card => createCard(io, card));
+  socket.on(socketConstants.card.delete, cardId => deleteCard(io, cardId));
+  socket.on(socketConstants.card.reorder, dropResult => reorderCard(socket, dropResult));
 
   socket.on('disconnect', () => {
     console.log('got disconnect!');

@@ -10,6 +10,8 @@ export const addPlayers = createAction(types.ADD_PLAYERS);
 export const removePlayer = createAction(types.REMOVE_PLAYER);
 
 export const loadPlayers = () => socket.emit(socketConstants.player.getAll);
+
+// should return undefined to prevent final form error
 export const createPlayer = (player: Player) => {
     socket.emit(socketConstants.player.create, player);
 };

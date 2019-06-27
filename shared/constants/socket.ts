@@ -12,5 +12,7 @@ export default {
     created: 'card added',
     delete: 'delete card',
     deleted: 'card deleted',
+    reorder: 'card reorder',
+    reordered: 'card reordered'
   }
 };

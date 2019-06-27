@@ -14,6 +14,7 @@ type Props = {
 
   subscribeToCardCreated: Function;
   subscribeToCardDeleted: Function;
+  subscribeToCardReordered: Function;
 }
 
 const App = ({ ...subscriptions }: Props) => {
