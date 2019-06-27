@@ -17,7 +17,7 @@
 }
 
 .player-item.is-dragging-over .cards-list {
-    background-color: lightgreen;
+    background-color: skyblue;
 }
 
 .player-item:not(:last-of-type) {
@@ -52,6 +52,7 @@
     overflow: auto;
 
     background-color: aliceblue;
+    transition: background-color .2s ease;
 }
 
 .cards-form-wrapper {

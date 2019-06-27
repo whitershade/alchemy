@@ -14,7 +14,7 @@
 }
 
 .card-item.isDragging {
-    background-color: lightblue;
+    background-color: lightgreen;
 }
 
 .card-name {
