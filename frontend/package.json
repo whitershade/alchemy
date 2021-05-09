@@ -17,7 +17,7 @@
     "alchemy-shared": "file:../shared",
     "final-form": "^4.13.1",
     "history": "^4.9.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "react": "^16.8.6",
     "react-beautiful-dnd": "^11.0.4",
     "react-dom": "^16.8.6",
