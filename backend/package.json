@@ -31,7 +31,7 @@
     "alchemy-shared": "file:../shared",
     "app-root-path": "^2.2.1",
     "cross-env": "^5.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "install": "^0.12.2",
     "knex": "^0.16.5",
     "lodash": "^4.17.11",
